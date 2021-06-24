@@ -1,0 +1,12 @@
+<%= form_with model:Post.new do |form| %>
+  <%= form.text_field :content %>
+  <%= form.submit "投稿する" %>
+<% end %>
+
+<ul>
+  <%- @posts.find_each do |post| %>
+    <li>
+      <%= post.content %>
+    </li>
+  <% end %>
+</ul>
