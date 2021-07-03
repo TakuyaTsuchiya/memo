@@ -83,4 +83,5 @@ production:
   <<: *default
   database: memo_production
   username: memo
+  url: <%= ENV['DATABASE_URL'] %>
   password: <%= ENV['MEMO_DATABASE_PASSWORD'] %>
