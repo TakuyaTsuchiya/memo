@@ -1,5 +1,5 @@
-<%= current_user.email %>
 <h1>掲示板</h1>
+<%= current_user&.email %>
 
 <%= link_to "ログイン", new_user_session_path %>
 
@@ -12,6 +12,12 @@
   <%- @posts.find_each do |post| %>
     <li>
       <%= post.content %>
+      作成者：<%= current_user.email %>
+      投稿日時：<%= current_user.created_at %>
+
+      <%- if post.user == current_user %>
+        <%= button_to("削除する", post_path(post), method: "delete", data: {confirm: "本当に削除しますか？"})%>
+      <% end %>
     </li>
   <% end %>
 </ul>
